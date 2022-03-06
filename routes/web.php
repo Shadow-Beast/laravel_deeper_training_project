@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('login', [AuthenticatedSessionController::class, 'show'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post('login', [AuthenticatedSessionController::class, 'login'])
+    ->middleware('guest');
+
+Route::post('logout', [AuthenticatedSessionController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
+
+// Google
+Route::get('google/login', [GoogleController::class, 'login'])
+    ->middleware('guest')
+    ->name('google.login');
+
+Route::any('google/callback', [GoogleController::class, 'callback'])
+    ->middleware('guest')
+    ->name('google.callback');
+
+Route::get('facebook/login', [FacebookController::class, 'login'])
+    ->middleware('guest')
+    ->name('facebook.login');

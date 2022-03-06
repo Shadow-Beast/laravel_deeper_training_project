@@ -28,16 +28,13 @@
 
 <body>
     <div>
-        @include('layouts.header')
-        
         <x-loading />
         
         <!-- Page Content -->
-        <main class="min-h-screen bg-secondary-light text-white">
+        <main class="flex items-center min-h-screen bg-secondary-light">
             {{ $slot }}
         </main>
 
-        @include('layouts.footer')
     </div>
     <!-- Scripts -->
 
