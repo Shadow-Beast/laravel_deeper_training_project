@@ -40,6 +40,11 @@ Route::any('google/callback', [GoogleController::class, 'callback'])
     ->middleware('guest')
     ->name('google.callback');
 
+// Facebook
 Route::get('facebook/login', [FacebookController::class, 'login'])
     ->middleware('guest')
     ->name('facebook.login');
+
+Route::any('facebook/callback', [FacebookController::class, 'callback'])
+    ->middleware('guest')
+    ->name('facebook.callback');

@@ -31,9 +31,15 @@ return [
     ],
 
     'google' => [
-        'client_id' => '829400511487-e0tjd9e4h78mjm3bn4apm5qi3jnlmq1s.apps.googleusercontent.com', //USE FROM Google DEVELOPER ACCOUNT
-        'client_secret' => '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', //USE FROM Google DEVELOPER ACCOUNT
+        'client_id' => env('GOOGLE_CLIENT_ID'), //USE FROM Google DEVELOPER ACCOUNT
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), //USE FROM Google DEVELOPER ACCOUNT
         'redirect' => 'http://127.0.0.1:8000/google/callback',
+    ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'), //USE FROM FACEBOOK DEVELOPER ACCOUNT
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'), //USE FROM FACEBOOK DEVELOPER ACCOUNT
+        'redirect' => 'http://127.0.0.1:8000/facebook/callback'
     ],
 
 ];
