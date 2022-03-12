@@ -20,7 +20,7 @@ class MeetingFactory extends Factory
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(5),
             'start_at' => now()->addDays(rand(1,100))->addHours(rand(0,24)),
-            'duration' => $this->faker->time($format = 'H:i:s'),
+            'duration' => $this->faker->time($format = 'H:i'),
             'url' => 'https://picsum.photos/1920/1080',
             'is_published' => 1,
             'meeting_id' => $this->faker->numerify('##########'),
