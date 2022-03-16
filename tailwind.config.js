@@ -1,7 +1,10 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    content: ['./resources/views/**/*.blade.php'],
+    content: [
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.js',
+    ],
     theme: {
         container: {
             center: true,

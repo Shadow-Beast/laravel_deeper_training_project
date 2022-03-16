@@ -1,4 +1,4 @@
-<input {{ $attributes->merge(['class' => '
+<textarea {{ $attributes->merge(['class' => '
     w-full
     px-4
     py-2
@@ -11,4 +11,5 @@
     focus:outline-none
     focus:ring-1
     focus:ring-primary
-    ']) }} />
+    h-[6.85rem]
+    ']) }}>{{ $slot }}</textarea>

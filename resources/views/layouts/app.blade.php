@@ -34,7 +34,9 @@
         
         <!-- Page Content -->
         <main class="min-h-screen bg-secondary-light text-white">
-            {{ $slot }}
+            <div class="max-w-7xl mx-auto pt-5 px-2 sm:px-6 lg:px-8">
+                {{ $slot }}
+            </div>
         </main>
 
         @include('layouts.footer')
@@ -42,8 +44,8 @@
     <!-- Scripts -->
 
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/common/loading.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ mix('js/common/loading.js') }}" defer></script>
 
     @yield('scripts')
 </body>

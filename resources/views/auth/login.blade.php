@@ -19,12 +19,14 @@
                             Email
                         </label>
                         <x-form.input class="input" type="email" name="email" placeholder="" />
+                        <x-error-message name="email"></x-error-message>
                     </div>
                     <div>
                         <label class="block mt-4 text-sm text-white">
                             Password
                         </label>
                         <x-form.input class="input" type="password" name="password" placeholder="" />
+                        <x-error-message name="password"></x-error-message>
                     </div>
                     <div class="mt-4 flex justify-between">
                         <label for="remember_me" class="inline-flex items-center">

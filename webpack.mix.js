@@ -18,4 +18,5 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ])
     .js('resources/js/common/loading.js', 'public/js/common/loading.js')
+    .js('resources/js/home.js', 'public/js/home.js')
     .version();
