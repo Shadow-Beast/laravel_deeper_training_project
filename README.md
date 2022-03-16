@@ -51,3 +51,9 @@ Run NPM for design:
 ```
 npm run watch
 ```
+
+Login as SuperAdmin:
+```
+email: admin@admin.com
+password: password
+```
