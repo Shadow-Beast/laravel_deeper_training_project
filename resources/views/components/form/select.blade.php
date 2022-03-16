@@ -1,4 +1,4 @@
-<input {{ $attributes->merge(['class' => '
+<select {{ $attributes->merge(['class' => '
     w-full
     px-4
     py-2
@@ -11,4 +11,4 @@
     focus:outline-none
     focus:ring-1
     focus:ring-primary
-    ']) }} />
+    ']) }} rows="3">{{ $slot }}</select>

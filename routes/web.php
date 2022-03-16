@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\MeetingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [MeetingController::class, 'index'])->name('home');
+Route::post('meeting/save', [MeetingController::class, 'save'])
+    ->middleware('auth')
+    ->name('meeting.save');
+Route::delete('meeting/{id}', [MeetingController::class, 'destroy'])->name('meeting.destroy');
 
 Route::get('login', [AuthenticatedSessionController::class, 'show'])
     ->middleware('guest')

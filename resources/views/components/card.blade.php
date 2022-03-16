@@ -22,9 +22,8 @@
                             </svg>
                         </button>
                         <div x-show="optionMenuOpen" class="absolute right-2 top-8 rounded-md shadow-lg bg-white text-right">
-                            {{-- TODO: --}}
                             <button class="block px-4 py-2 text-sm w-full text-primary rounded-t-md hover:bg-gray-100"
-                                @click="alert('Edit {{ $meeting->id }}')">Edit</button>
+                                @click="openSaveModal({{ $meeting->id }})">Edit</button>
                             <button class="block px-4 py-2 text-sm w-full text-red-500 rounded-b-md hover:bg-gray-100"
                                 @click="openDeleteConfirmModal({{ $meeting->id }})">Delete</button>
                         </div>
