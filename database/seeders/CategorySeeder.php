@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
         $categories = [
             'Other',
             'Team Building',
-            'Event',
+            'Special Event',
             'Info-Sharing',
         ];
 
