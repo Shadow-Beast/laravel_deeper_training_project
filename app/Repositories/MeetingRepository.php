@@ -40,6 +40,7 @@ class MeetingRepository
             } else {
                 $meeting->image_url = $meeting->image->url;
             }
+            $meeting->description = nl2br($meeting->description);
             return $meeting;
         });
 
