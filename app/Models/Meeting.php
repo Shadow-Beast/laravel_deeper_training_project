@@ -46,10 +46,10 @@ class Meeting extends Model
         $query->when($filters['search'] ?? false, function ($query, $searchData) {
             $query->where('title', 'like', '%' . $searchData . '%')
                 ->orWhere('description', 'like', '%' . $searchData . '%')
-                ->orWhereHas('meeting_types', function($query) use ($searchData) {
+                ->orWhereHas('meetingType', function($query) use ($searchData) {
                     $query->where('name', 'like', '%' . $searchData . '%');
                 })
-                ->orWhereHas('categories', function($query) use ($searchData) {
+                ->orWhereHas('category', function($query) use ($searchData) {
                     $query->where('name', 'like', '%' . $searchData . '%');
                 });
         });

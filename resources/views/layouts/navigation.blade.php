@@ -3,7 +3,7 @@
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <!-- Mobile menu button -->
-                <button @click="menuOpen = ! menuOpen" @click.away="menuOpen = false" type="button"
+                <button @click="menuOpen = ! menuOpen" type="button"
                     class="inline-flex items-center justify-center p-2 rounded-md hover:outline-none hover:ring-2 hover:ring-inset hover:ring-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only fill-white">Open main menu</span>
@@ -28,17 +28,27 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-secondary-dark text-white px-3 py-2 rounded-md text-sm font-medium"
+                        <a href="{{ route('home') }}" class="bg-secondary-dark text-white px-3 py-2 rounded-md text-sm font-medium"
                             aria-current="page">Home</a>
-
-                        <a href="#"
+                        <form action="{{ url()->current() }}" method="GET" class="relative w-[20rem]">
+                            <x-form.input type="text" name="search" placeholder="Search..."
+                                class="placeholder-muted/[0.7]" value="{{ request('search') }}" />
+                            <span class="absolute top-1.5 right-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-muted" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </span>
+                        </form>
+                        {{-- <a href="#"
                             class="text-muted hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
 
                         <a href="#"
                             class="text-muted hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
 
                         <a href="#"
-                            class="text-muted hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
+                            class="text-muted hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a> --}}
                     </div>
                 </div>
             </div>
@@ -81,19 +91,29 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="menuOpen" class="sm:hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
+    <div x-show="menuOpen" class="sm:hidden" id="mobile-menu" @click.away="menuOpen = false">
+        <div class="px-2 pt-2 pb-3 space-y-2">
+            <form action="{{ url()->current() }}" method="GET" class="relative w-full">
+                <x-form.input type="text" name="search" placeholder="Search..."
+                    class="placeholder-muted/[0.7]" value="{{ request('search') }}" />
+                <span class="absolute top-1.5 right-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-muted" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </form>
             <a href="#" class="bg-secondary-dark text-white block px-3 py-2 rounded-md text-base font-medium"
                 aria-current="page">Home</a>
-
-            <a href="#"
+            {{-- <a href="#"
                 class="text-muted hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
 
             <a href="#"
                 class="text-muted hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
 
             <a href="#"
-                class="text-muted hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+                class="text-muted hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a> --}}
         </div>
     </div>
 </nav>
