@@ -32,7 +32,7 @@
                             aria-current="page">Home</a>
                         <form action="{{ url()->current() }}" method="GET" class="relative w-[20rem]">
                             <x-form.input type="text" name="search" placeholder="Search..."
-                                class="placeholder-muted/[0.7]" value="{{ request('search') }}" />
+                                class="placeholder-muted/[0.7] pr-10" value="{{ request('search') }}" />
                             <span class="absolute top-1.5 right-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-muted" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -95,7 +95,7 @@
         <div class="px-2 pt-2 pb-3 space-y-2">
             <form action="{{ url()->current() }}" method="GET" class="relative w-full">
                 <x-form.input type="text" name="search" placeholder="Search..."
-                    class="placeholder-muted/[0.7]" value="{{ request('search') }}" />
+                    class="placeholder-muted/[0.7] pr-10" value="{{ request('search') }}" />
                 <span class="absolute top-1.5 right-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-muted" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

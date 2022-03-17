@@ -1257,6 +1257,12 @@ select {
 .pr-16 {
   padding-right: 4rem;
 }
+.pr-6 {
+  padding-right: 1.5rem;
+}
+.pr-10 {
+  padding-right: 2.5rem;
+}
 .text-left {
   text-align: left;
 }
