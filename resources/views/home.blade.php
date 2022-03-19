@@ -286,7 +286,9 @@
             meetings: @json($allMeetings),
             currentUrl: "{{ route('home') }}",
             defaultProfileUrl: "{{ asset('images/avator.png') }}",
-            previewImageUrl: "{{ asset('images/preview-image-placeholder.png') }}"
+            previewImageUrl: "{{ asset('images/preview-image-placeholder.png') }}",
+            isErrorExist: {{ ($errors->isEmpty()) ? 'false' : 'true' }},
+            oldValueList: @json(session()->getOldInput())
         }
     </script>
     <script src="{{ mix('js/home.js') }}"></script>
