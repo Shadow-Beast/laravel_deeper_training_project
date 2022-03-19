@@ -27,7 +27,6 @@ class MeetingSaveRequest extends FormRequest
      */
     public function rules()
     {
-        info($this);
         return [
             'id' => ['nullable'],
             'title' => ['required'],

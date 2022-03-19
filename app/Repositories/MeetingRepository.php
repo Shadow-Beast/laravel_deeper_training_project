@@ -39,7 +39,6 @@ class MeetingRepository
             ->withQueryString();
 
         $meetings->map(function ($meeting) {
-            info($meeting);
             if (optional($meeting->image)->url == null) {
                 if ($meeting->meeting_type_id == EnumsMeetingType::ZOOM) {
                     $meeting->image_url = asset('images/defaults/zoom.jpg');

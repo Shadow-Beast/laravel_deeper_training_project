@@ -4,14 +4,31 @@ document.addEventListener('alpine:init', () => {
         detailModalOpen: false,
         saveModalOpen: false,
         deleteConfirmModalOpen: false,
+        init() {
+            if (this.isErrorExist) {
+                this.openSaveModal(this.oldValueList.id);
+            }
+        },
         openSaveModal(id = null) {
             if (!$('body').hasClass('overflow-hidden')) {
                 $('body').addClass('overflow-hidden');
                 this.saveModalOpen = true;
+                let meeting = {};
+
                 if (id) {
                     $('#saveModalTitle').text('Edit Meeting');
-
                     meeting = this.meetings.find(meeting => meeting.id == id);
+                } else {
+                    $('#saveModalTitle').text('Create Meeting');
+                }
+
+                if (Object.keys(this.oldValueList).length > 0) {
+                    if (meeting.id == this.oldValueList.id) {
+                        meeting = this.oldValueList;
+                    }
+                }
+
+                if (Object.keys(meeting).length > 0) {
                     $('#input-id').val(meeting.id);
                     $('#input-title').val(meeting.title);
                     $('#input-description').val(meeting.description);
@@ -23,11 +40,8 @@ document.addEventListener('alpine:init', () => {
                     $('#input-meeting-password').val(meeting.meeting_password);
                     $('#input-duration').val(moment.utc(meeting.duration).format('HH[:]mm'));
                     $('#input-is-published').val(meeting.is_published);
-                    $('#preview-image').attr('src', meeting.image.url || this.previewImageUrl);
-                }
-                else {
-                    $('#saveModalTitle').text('Create Meeting');
-
+                    $('#preview-image').attr('src', meeting.image?.url || this.previewImageUrl);
+                } else {
                     //Reset Form
                     $('#input-id').val(null);
                     $('#input-title').val(null);
@@ -48,6 +62,10 @@ document.addEventListener('alpine:init', () => {
             if ($('body').hasClass('overflow-hidden')) {
                 $('body').removeClass('overflow-hidden');
             }
+            // Remove old message and error
+            $('div.text-red-500').hide();
+            this.oldValueList = {};
+
             this.saveModalOpen = false;
         },
         openDeleteConfirmModal(id) {
@@ -111,15 +129,15 @@ document.addEventListener('alpine:init', () => {
         },
         previewImage(event) {
             let file = event.target.files[0];
-            if(file) {
+            if (file) {
                 let reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function (e) {
                     $('#preview-image').attr('src', e.target.result);
-                }
+                };
             } else {
                 $('#preview-image').attr('src', this.previewImageUrl);
             }
-        }
+        },
     }));
 });
