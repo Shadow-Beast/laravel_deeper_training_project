@@ -63,7 +63,7 @@ document.addEventListener('alpine:init', () => {
                 $('body').removeClass('overflow-hidden');
             }
             // Remove old message and error
-            $('div.text-red-500').hide();
+            $('.error').hide();
             this.oldValueList = {};
 
             this.saveModalOpen = false;

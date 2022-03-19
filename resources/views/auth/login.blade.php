@@ -14,18 +14,18 @@
                     <h1 class="mb-4 text-2xl font-bold text-center text-primary">
                         Login to Your Account
                     </h1>
-                    <div>
+                    <div class="mb-7">
                         <label class="block text-sm text-white">
                             Email
                         </label>
-                        <x-form.input class="input" type="email" name="email" placeholder="" />
+                        <x-form.input type="email" name="email" placeholder="" />
                         <x-error-message name="email"></x-error-message>
                     </div>
-                    <div>
+                    <div class="mb-7">
                         <label class="block mt-4 text-sm text-white">
                             Password
                         </label>
-                        <x-form.input class="input" type="password" name="password" placeholder="" />
+                        <x-form.input type="password" name="password" placeholder="" />
                         <x-error-message name="password"></x-error-message>
                     </div>
                     <div class="mt-4 flex justify-between">

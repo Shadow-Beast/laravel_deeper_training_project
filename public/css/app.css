@@ -813,6 +813,9 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
 .mb-2 {
   margin-bottom: 0.5rem;
 }
