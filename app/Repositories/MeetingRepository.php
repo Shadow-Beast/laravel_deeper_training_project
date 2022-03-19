@@ -2,18 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Enums\Meeting as EnumsMeeting;
-use App\Enums\MeetingType as EnumsMeetingType;
+use Throwable;
+use App\Models\Meeting;
 use App\Enums\Paginator;
 use App\Models\Category;
-use App\Models\Meeting;
 use App\Models\MeetingType;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Throwable;
+use App\Enums\Meeting as EnumsMeeting;
+use App\Enums\MeetingType as EnumsMeetingType;
 
 class MeetingRepository
 {
+    private $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function getAll()
     {
         $meetings = Meeting::with([
@@ -31,6 +39,7 @@ class MeetingRepository
             ->withQueryString();
 
         $meetings->map(function ($meeting) {
+            info($meeting);
             if (optional($meeting->image)->url == null) {
                 if ($meeting->meeting_type_id == EnumsMeetingType::ZOOM) {
                     $meeting->image_url = asset('images/defaults/zoom.jpg');
@@ -40,6 +49,7 @@ class MeetingRepository
             } else {
                 $meeting->image_url = $meeting->image->url;
             }
+            $meeting->description = nl2br($meeting->description);
             return $meeting;
         });
 
@@ -103,11 +113,13 @@ class MeetingRepository
             }
             $meeting->save();
 
+            $this->imageService->save($request, $meeting);
+
             DB::commit();
 
             session()->flash('success', 'Meeting Saved Successfully.');
         } catch (Throwable $th) {
-            Log::error(__CLASS__ . '::' . __FUNCTION__ . '[line: ' . __LINE__ . '][Meetin Saving failed] Message: ' . $th->getMessage());
+            Log::error(__CLASS__ . '::' . __FUNCTION__ . '[line: ' . __LINE__ . '][Meeting Saving failed] Message: ' . $th->getMessage());
             DB::rollBack();
 
             session()->flash('fail', 'Meeting Saving Failed.');
