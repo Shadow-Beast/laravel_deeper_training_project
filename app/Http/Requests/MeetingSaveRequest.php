@@ -27,6 +27,7 @@ class MeetingSaveRequest extends FormRequest
      */
     public function rules()
     {
+        info($this);
         return [
             'id' => ['nullable'],
             'title' => ['required'],
@@ -39,6 +40,7 @@ class MeetingSaveRequest extends FormRequest
             'meeting_password' => ['nullable'],
             'meeting_type_id' => ['required', 'exists:meeting_types,id'],
             'category_id' => ['required', 'exists:categories,id'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif,svg'],
         ];
     }
 }

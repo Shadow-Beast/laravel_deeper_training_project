@@ -11,5 +11,5 @@
     focus:outline-none
     focus:ring-1
     focus:ring-primary
-    h-[6.85rem]
+    h-[8.25rem]
     ']) }}>{{ $slot }}</textarea>

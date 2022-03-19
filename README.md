@@ -52,6 +52,11 @@ Run NPM for design:
 npm run watch
 ```
 
+For Image Upload:
+```
+php artisan storage:link
+```
+
 Login as SuperAdmin:
 ```
 email: admin@admin.com
